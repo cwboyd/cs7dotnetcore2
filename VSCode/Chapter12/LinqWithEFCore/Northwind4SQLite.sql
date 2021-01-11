@@ -56,7 +56,7 @@ CREATE TABLE "Customers" (
 	"Country" nvarchar (15) NULL ,
 	"Phone" nvarchar (24) NULL ,
 	"Fax" nvarchar (24) NULL ,
-	CONSTRAINT "PK_Customers" PRIMARY KEY  
+	CONSTRAINT "PK_Customers" PRIMARY KEY
 	(
 		"CustomerID"
 	)
@@ -104,19 +104,19 @@ CREATE TABLE "Orders" (
 	"ShipRegion" nvarchar (15) NULL ,
 	"ShipPostalCode" nvarchar (10) NULL ,
 	"ShipCountry" nvarchar (15) NULL ,
-	CONSTRAINT "FK_Orders_Customers" FOREIGN KEY 
+	CONSTRAINT "FK_Orders_Customers" FOREIGN KEY
 	(
 		"CustomerID"
 	) REFERENCES "Customers" (
 		"CustomerID"
 	),
-	CONSTRAINT "FK_Orders_Employees" FOREIGN KEY 
+	CONSTRAINT "FK_Orders_Employees" FOREIGN KEY
 	(
 		"EmployeeID"
 	) REFERENCES "Employees" (
 		"EmployeeID"
 	),
-	CONSTRAINT "FK_Orders_Shippers" FOREIGN KEY 
+	CONSTRAINT "FK_Orders_Shippers" FOREIGN KEY
 	(
 		"ShipVia"
 	) REFERENCES "Shippers" (
@@ -143,13 +143,13 @@ CREATE TABLE "Products" (
 	"UnitsOnOrder" "smallint" NULL CONSTRAINT "DF_Products_UnitsOnOrder" DEFAULT (0),
 	"ReorderLevel" "smallint" NULL CONSTRAINT "DF_Products_ReorderLevel" DEFAULT (0),
 	"Discontinued" "bit" NOT NULL CONSTRAINT "DF_Products_Discontinued" DEFAULT (0),
-	CONSTRAINT "FK_Products_Categories" FOREIGN KEY 
+	CONSTRAINT "FK_Products_Categories" FOREIGN KEY
 	(
 		"CategoryID"
 	) REFERENCES "Categories" (
 		"CategoryID"
 	),
-	CONSTRAINT "FK_Products_Suppliers" FOREIGN KEY 
+	CONSTRAINT "FK_Products_Suppliers" FOREIGN KEY
 	(
 		"SupplierID"
 	) REFERENCES "Suppliers" (
@@ -172,18 +172,18 @@ CREATE TABLE "Order Details" (
 	"UnitPrice" "money" NOT NULL CONSTRAINT "DF_Order_Details_UnitPrice" DEFAULT (0),
 	"Quantity" "smallint" NOT NULL CONSTRAINT "DF_Order_Details_Quantity" DEFAULT (1),
 	"Discount" "real" NOT NULL CONSTRAINT "DF_Order_Details_Discount" DEFAULT (0),
-	CONSTRAINT "PK_Order_Details" PRIMARY KEY  
+	CONSTRAINT "PK_Order_Details" PRIMARY KEY
 	(
 		"OrderID",
 		"ProductID"
 	),
-	CONSTRAINT "FK_Order_Details_Orders" FOREIGN KEY 
+	CONSTRAINT "FK_Order_Details_Orders" FOREIGN KEY
 	(
 		"OrderID"
 	) REFERENCES "Orders" (
 		"OrderID"
 	),
-	CONSTRAINT "FK_Order_Details_Products" FOREIGN KEY 
+	CONSTRAINT "FK_Order_Details_Products" FOREIGN KEY
 	(
 		"ProductID"
 	) REFERENCES "Products" (
@@ -198,7 +198,7 @@ CREATE  INDEX "OrdersOrder_Details" ON "Order Details"("OrderID");
 CREATE  INDEX "ProductID" ON "Order Details"("ProductID");
 CREATE  INDEX "ProductsOrder_Details" ON "Order Details"("ProductID");
 
-INSERT INTO "Categories"("CategoryID","CategoryName","Description","Picture") 
+INSERT INTO "Categories"("CategoryID","CategoryName","Description","Picture")
 VALUES(1,'Beverages','Soft drinks, coffees, teas, beers, and ales',null),
 (2,'Condiments','Sweet and savory sauces, relishes, spreads, and seasonings',null),
 (3,'Confections','Desserts, candies, and sweet breads',null),
@@ -8607,15 +8607,15 @@ INSERT INTO "Products"("ProductID","ProductName","SupplierID","CategoryID","Quan
 INSERT INTO "Products"("ProductID","ProductName","SupplierID","CategoryID","QuantityPerUnit","UnitPrice","UnitsInStock","UnitsOnOrder","ReorderLevel","Discontinued") VALUES(76,'Lakkalikööri',23,1,'500 ml',18,57,0,20,0);
 INSERT INTO "Products"("ProductID","ProductName","SupplierID","CategoryID","QuantityPerUnit","UnitPrice","UnitsInStock","UnitsOnOrder","ReorderLevel","Discontinued") VALUES(77,'Original Frankfurter grüne Soße',12,2,'12 boxes',13,32,0,15,0);
 
-CREATE TABLE [Territories] 
+CREATE TABLE [Territories]
 	([TerritoryID] [nvarchar] (20) NOT NULL ,
 	[TerritoryDescription] [nchar] (50) NOT NULL ,
         [RegionID] [int] NOT NULL
 );
 
-CREATE TABLE [EmployeeTerritories] 
+CREATE TABLE [EmployeeTerritories]
 	([EmployeeID] [int] NOT NULL,
-	[TerritoryID] [nvarchar] (20) NOT NULL 
+	[TerritoryID] [nvarchar] (20) NOT NULL
 );
 
 Insert Into Territories Values ('01581','Westboro',1);
