@@ -198,6 +198,7 @@ CREATE  INDEX "OrdersOrder_Details" ON "Order Details"("OrderID");
 CREATE  INDEX "ProductID" ON "Order Details"("ProductID");
 CREATE  INDEX "ProductsOrder_Details" ON "Order Details"("ProductID");
 
+BEGIN TRANSACTION;
 INSERT INTO "Categories"("CategoryID","CategoryName","Description","Picture")
 VALUES(1,'Beverages','Soft drinks, coffees, teas, beers, and ales',null),
 (2,'Condiments','Sweet and savory sauces, relishes, spreads, and seasonings',null),
@@ -207,7 +208,9 @@ VALUES(1,'Beverages','Soft drinks, coffees, teas, beers, and ales',null),
 (6,'Meat/Poultry','Prepared meats',null),
 (7,'Produce','Dried fruit and bean curd',null),
 (8,'Seafood','Seaweed and fish',null);
+COMMIT;
 
+BEGIN TRANSACTION;
 INSERT INTO "Customers" VALUES('ALFKI','Alfreds Futterkiste','Maria Anders','Sales Representative','Obere Str. 57','Berlin',NULL,'12209','Germany','030-0074321','030-0076545');
 INSERT INTO "Customers" VALUES('ANATR','Ana Trujillo Emparedados y helados','Ana Trujillo','Owner','Avda. de la Constitución 2222','México D.F.',NULL,'05021','Mexico','(5) 555-4729','(5) 555-3745');
 INSERT INTO "Customers" VALUES('ANTON','Antonio Moreno Taquería','Antonio Moreno','Owner','Mataderos  2312','México D.F.',NULL,'05023','Mexico','(5) 555-3932',NULL);
@@ -299,11 +302,12 @@ INSERT INTO "Customers" VALUES('WELLI','Wellington Importadora','Paula Parente',
 INSERT INTO "Customers" VALUES('WHITC','White Clover Markets','Karl Jablonski','Owner','305 - 14th Ave. S. Suite 3B','Seattle','WA','98128','USA','(206) 555-4112','(206) 555-4115');
 INSERT INTO "Customers" VALUES('WILMK','Wilman Kala','Matti Karttunen','Owner/Marketing Assistant','Keskuskatu 45','Helsinki',NULL,'21240','Finland','90-224 8858','90-224 8858');
 INSERT INTO "Customers" VALUES('WOLZA','Wolski  Zajazd','Zbyszek Piestrzeniewicz','Owner','ul. Filtrowa 68','Warszawa',NULL,'01-012','Poland','(26) 642-7012','(26) 642-7012');
+COMMIT;
 
+BEGIN TRANSACTION;
 INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCourtesy","BirthDate","HireDate","Address","City","Region","PostalCode","Country","HomePhone","Extension","Photo","Notes","ReportsTo","PhotoPath") VALUES(1,'Davolio','Nancy','Sales Representative','Ms.','12/08/1948','05/01/1992','507 - 20th Ave. E.
 Apt. 2A','Seattle','WA','98122','USA','(206) 555-9857','5467',null,'Education includes a BA in psychology from Colorado State University in 1970.  She also completed "The Art of the Cold Call."  Nancy is a member of Toastmasters International.',2,'http://accweb/emmployees/davolio.bmp');
 INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCourtesy","BirthDate","HireDate","Address","City","Region","PostalCode","Country","HomePhone","Extension","Photo","Notes","ReportsTo","PhotoPath") VALUES(2,'Fuller','Andrew','Vice President, Sales','Dr.','02/19/1952','08/14/1992','908 W. Capital Way','Tacoma','WA','98401','USA','(206) 555-9482','3457',null,'Andrew received his BTS commercial in 1974 and a Ph.D. in international marketing from the University of Dallas in 1981.  He is fluent in French and Italian and reads German.  He joined the company as a sales representative, was promoted to sales manager in January 1992 and to vice president of sales in March 1993.  Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.',NULL,'http://accweb/emmployees/fuller.bmp');
-
 INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCourtesy","BirthDate","HireDate","Address","City","Region","PostalCode","Country","HomePhone","Extension","Photo","Notes","ReportsTo","PhotoPath") VALUES(3,'Leverling','Janet','Sales Representative','Ms.','08/30/1963','04/01/1992','722 Moss Bay Blvd.','Kirkland','WA','98033','USA','(206) 555-3412','3355',null,'Janet has a BS degree in chemistry from Boston College (1984).  She has also completed a certificate program in food retailing management.  Janet was hired as a sales associate in 1991 and promoted to sales representative in February 1992.',2,'http://accweb/emmployees/leverling.bmp');
 INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCourtesy","BirthDate","HireDate","Address","City","Region","PostalCode","Country","HomePhone","Extension","Photo","Notes","ReportsTo","PhotoPath") VALUES(4,'Peacock','Margaret','Sales Representative','Mrs.','09/19/1937','05/03/1993','4110 Old Redmond Rd.','Redmond','WA','98052','USA','(206) 555-8122','5176',null,'Margaret holds a BA in English literature from Concordia College (1958) and an MA from the American Institute of Culinary Arts (1966).  She was assigned to the London office temporarily from July through November 1992.',2,'http://accweb/emmployees/peacock.bmp');
 INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCourtesy","BirthDate","HireDate","Address","City","Region","PostalCode","Country","HomePhone","Extension","Photo","Notes","ReportsTo","PhotoPath") VALUES(5,'Buchanan','Steven','Sales Manager','Mr.','03/04/1955','10/17/1993','14 Garrett Hill','London',NULL,'SW1 8JR','UK','(71) 555-4848','3453',null,'Steven Buchanan graduated from St. Andrews University, Scotland, with a BSC degree in 1976.  Upon joining the company as a sales representative in 1992, he spent 6 months in an orientation program at the Seattle office and then returned to his permanent post in London.  He was promoted to sales manager in March 1993.  Mr. Buchanan has completed the courses "Successful Telemarketing" and "International Sales Management."  He is fluent in French.',2,'http://accweb/emmployees/buchanan.bmp');
@@ -313,7 +317,9 @@ INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCour
 Winchester Way','London',NULL,'RG1 9SP','UK','(71) 555-5598','465',null,'Robert King served in the Peace Corps and traveled extensively before completing his degree in English at the University of Michigan in 1992, the year he joined the company.  After completing a course entitled "Selling in Europe," he was transferred to the London office in March 1993.',5,'http://accweb/emmployees/davolio.bmp');
 INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCourtesy","BirthDate","HireDate","Address","City","Region","PostalCode","Country","HomePhone","Extension","Photo","Notes","ReportsTo","PhotoPath") VALUES(8,'Callahan','Laura','Inside Sales Coordinator','Ms.','01/09/1958','03/05/1994','4726 - 11th Ave. N.E.','Seattle','WA','98105','USA','(206) 555-1189','2344',null,'Laura received a BA in psychology from the University of Washington.  She has also completed a course in business French.  She reads and writes French.',2,'http://accweb/emmployees/davolio.bmp');
 INSERT INTO "Employees"("EmployeeID","LastName","FirstName","Title","TitleOfCourtesy","BirthDate","HireDate","Address","City","Region","PostalCode","Country","HomePhone","Extension","Photo","Notes","ReportsTo","PhotoPath") VALUES(9,'Dodsworth','Anne','Sales Representative','Ms.','01/27/1966','11/15/1994','7 Houndstooth Rd.','London',NULL,'WG2 7LT','UK','(71) 555-4444','452',null,'Anne has a BA degree in English from St. Lawrence College.  She is fluent in French and German.',5,'http://accweb/emmployees/davolio.bmp');
+COMMIT;
 
+BEGIN TRANSACTION;
 INSERT INTO "Order Details" VALUES(10248,11,14,12,0);
 INSERT INTO "Order Details" VALUES(10248,42,9.8,10,0);
 INSERT INTO "Order Details" VALUES(10248,72,34.8,5,0);
@@ -2684,7 +2690,9 @@ INSERT INTO "Order Details" VALUES(11077,66,17,1,0);
 INSERT INTO "Order Details" VALUES(11077,73,15,2,0.01);
 INSERT INTO "Order Details" VALUES(11077,75,7.75,4,0);
 INSERT INTO "Order Details" VALUES(11077,77,13,2,0);
+COMMIT;
 
+BEGIN TRANSACTION;
 INSERT INTO "Orders"
 ("OrderID","CustomerID","EmployeeID","OrderDate","RequiredDate",
 	"ShippedDate","ShipVia","Freight","ShipName","ShipAddress",
@@ -8495,11 +8503,12 @@ INSERT INTO "Orders"
 VALUES (11077,'RATTC',1,'5/6/1998','6/3/1998',NULL,2,8.53,
 	'Rattlesnake Canyon Grocery','2817 Milton Dr.','Albuquerque',
 	'NM','87110','USA');
+COMMIT;
 
+BEGIN TRANSACTION;
 INSERT INTO "Shippers"("ShipperID","CompanyName","Phone") VALUES(1,'Speedy Express','(503) 555-9831');
 INSERT INTO "Shippers"("ShipperID","CompanyName","Phone") VALUES(2,'United Package','(503) 555-3199');
 INSERT INTO "Shippers"("ShipperID","CompanyName","Phone") VALUES(3,'Federal Shipping','(503) 555-9931');
-
 INSERT INTO "Suppliers"("SupplierID","CompanyName","ContactName","ContactTitle","Address","City","Region","PostalCode","Country","Phone","Fax","HomePage") VALUES(1,'Exotic Liquids','Charlotte Cooper','Purchasing Manager','49 Gilbert St.','London',NULL,'EC1 4SD','UK','(171) 555-2222',NULL,NULL);
 INSERT INTO "Suppliers"("SupplierID","CompanyName","ContactName","ContactTitle","Address","City","Region","PostalCode","Country","Phone","Fax","HomePage") VALUES(2,'New Orleans Cajun Delights','Shelley Burke','Order Administrator','P.O. Box 78934','New Orleans','LA','70117','USA','(100) 555-4822',NULL,'#CAJUN.HTM#');
 INSERT INTO "Suppliers"("SupplierID","CompanyName","ContactName","ContactTitle","Address","City","Region","PostalCode","Country","Phone","Fax","HomePage") VALUES(3,'Grandma Kelly''s Homestead','Regina Murphy','Sales Representative','707 Oxford Rd.','Ann Arbor','MI','48104','USA','(313) 555-5735','(313) 555-3349',NULL);
@@ -8606,6 +8615,7 @@ INSERT INTO "Products"("ProductID","ProductName","SupplierID","CategoryID","Quan
 INSERT INTO "Products"("ProductID","ProductName","SupplierID","CategoryID","QuantityPerUnit","UnitPrice","UnitsInStock","UnitsOnOrder","ReorderLevel","Discontinued") VALUES(75,'Rhönbräu Klosterbier',12,1,'24 - 0.5 l bottles',7.75,125,0,25,0);
 INSERT INTO "Products"("ProductID","ProductName","SupplierID","CategoryID","QuantityPerUnit","UnitPrice","UnitsInStock","UnitsOnOrder","ReorderLevel","Discontinued") VALUES(76,'Lakkalikööri',23,1,'500 ml',18,57,0,20,0);
 INSERT INTO "Products"("ProductID","ProductName","SupplierID","CategoryID","QuantityPerUnit","UnitPrice","UnitsInStock","UnitsOnOrder","ReorderLevel","Discontinued") VALUES(77,'Original Frankfurter grüne Soße',12,2,'12 boxes',13,32,0,15,0);
+COMMIT;
 
 CREATE TABLE [Territories]
 	([TerritoryID] [nvarchar] (20) NOT NULL ,
@@ -8618,6 +8628,7 @@ CREATE TABLE [EmployeeTerritories]
 	[TerritoryID] [nvarchar] (20) NOT NULL
 );
 
+BEGIN TRANSACTION;
 Insert Into Territories Values ('01581','Westboro',1);
 Insert Into Territories Values ('01730','Bedford',1);
 Insert Into Territories Values ('01833','Georgetow',1);
@@ -8671,7 +8682,9 @@ Insert Into Territories Values ('95060','Santa Cruz',2);
 Insert Into Territories Values ('98004','Bellevue',2);
 Insert Into Territories Values ('98052','Redmond',2);
 Insert Into Territories Values ('98104','Seattle',2);
+COMMIT;
 
+BEGIN TRANSACTION;
 Insert Into EmployeeTerritories Values (1,'06897');
 Insert Into EmployeeTerritories Values (1,'19713');
 Insert Into EmployeeTerritories Values (2,'01581');
@@ -8721,3 +8734,4 @@ Insert Into EmployeeTerritories Values (9,'48084');
 Insert Into EmployeeTerritories Values (9,'48304');
 Insert Into EmployeeTerritories Values (9,'55113');
 Insert Into EmployeeTerritories Values (9,'55439');
+COMMIT;
